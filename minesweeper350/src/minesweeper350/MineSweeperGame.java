@@ -13,12 +13,23 @@ import javax.swing.JOptionPane;
 
 public class MineSweeperGame {
 
+  /** Board array. */
   private Cell[][] board;
+  
+  /** total number of mines. */
   private int totalMineCount = 10;
-  int wins = 0;
-  int losses = 0;
-  int selected = 0;
-  int totalspaces = 100;
+  
+  /** Number of wins. */
+  private int wins = 0;
+  
+  /** Number of losses. */
+  private int losses = 0;
+  
+  /** Number of selected cells. */
+  private int selected = 0;
+  
+  /** Total cells. */
+  private int totalspaces = 100;
 
     /**
      * constructor that instantiates the board and creates the layout.
@@ -43,28 +54,35 @@ public class MineSweeperGame {
             for (int y = 0; y < board[0].length; y++) {
                 if (!(board[x][y].isMine())) {
                     int neighborcount = 0;
-                    if (x < board.length - 1 && y > 0 && board[x + 1][y - 1].isMine()) { // down left
+                    if (x < board.length - 1 && y > 0 
+                            && board[x + 1][y - 1].isMine()) { // down left
                         neighborcount++;
                     }
-                    if (x > 0 && y > 0 && board[x - 1][y - 1].isMine()) { // up left
+                    if (x > 0 && y > 0 
+                            && board[x - 1][y - 1].isMine()) { // up left
                         neighborcount++;
                     }
                     if (y > 0 && board[x][y - 1].isMine()) { // up
                         neighborcount++;
                     }
-                    if (x < board.length - 1 && y < board[0].length - 1 && board[x + 1][y + 1].isMine()) { // down right
+                    if (x < board.length - 1 
+                            && y < board[0].length - 1 
+                            && board[x + 1][y + 1].isMine()) { // down right
                         neighborcount++;
                     }
                     if (x > 0 && board[x - 1][y].isMine()) { // left
                         neighborcount++;
                     }
-                    if (x < board.length - 1 && board[x + 1][y].isMine()) { // right
+                    if (x < board.length - 1 
+                            && board[x + 1][y].isMine()) { // right
                         neighborcount++;
                     }
-                    if (x > 0 && y < board[0].length - 1 && board[x - 1][y + 1].isMine()) { // up right
+                    if (x > 0 && y < board[0].length - 1 
+                            && board[x - 1][y + 1].isMine()) { // up right
                         neighborcount++;
                     }
-                    if (y < board[0].length - 1 && board[x][y + 1].isMine()) { // down
+                    if (y < board[0].length - 1 
+                            && board[x][y + 1].isMine()) { // down
                         neighborcount++;
                     }
 
@@ -78,11 +96,11 @@ public class MineSweeperGame {
     /**
      * selects the current cell and exposes it if it isn't flagged.
      * 
-     * @param row
-     * @param col
+     * @param row row.
+     * @param col column.
      */
 
-    public void select(int row, int col) {
+    public void select(final int row, final int col) {
         board[row][col].setExposed(true);
         if (board[row][col].isMine() && (!board[row][col].isFlagged())) {
             losses++;
@@ -110,11 +128,11 @@ public class MineSweeperGame {
     /**
      * returns the current cell space.
      * 
-     * @param row
-     * @param col
-     * @return
+     * @param row row.
+     * @param col column.
+     * @return Cell
      */
-    public Cell getCell(int row, int col) {
+    public Cell getCell(final int row, final int col) {
         return board[row][col];
     }
 

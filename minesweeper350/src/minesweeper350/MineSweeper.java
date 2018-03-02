@@ -1,12 +1,16 @@
 package minesweeper350;
 
 /**
- * <p> Class that calls MineSweeperPanel and starts the game.
- * </p>
+ * Class that calls MineSweeperPanel and starts the game.
+ * 
  */
-
 public class MineSweeper {
-    public static void main(String[] args) {
+    /**
+     * Class that calls MineSweeperPanel and starts the game.
+     * 
+     * @param args Arguments.
+     */
+    public static void main(final String[] args) {
         new MineSweeperPanel();
 }
 }
